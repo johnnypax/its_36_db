@@ -27,7 +27,12 @@ INSERT INTO Persona (nome, cognome, cod_fis, telefono) VALUES
 ('Francesco', 'De Luca', 'DLCFNC91L20H501R', '3507788991'),
 ('Alessia', 'Greco', 'GRCLSS86M05L219W', '3661122445');
 
+-- SET SQL_SAFE_UPDATES = 1;
+DELETE FROM Persona WHERE cod_fis = "GRCLSS86M05L219W";
 
+UPDATE Persona 
+	SET nome = "Giulio", cognome = "Bianchi" 
+    WHERE cod_fis = "RSSMRC80A01H501U";
 
 
 SELECT * FROM Persona;
