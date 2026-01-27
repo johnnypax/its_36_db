@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS lez04_otm_gest_cart;
 CREATE DATABASE lez04_otm_gest_cart;
 USE lez04_otm_gest_cart;
 
@@ -30,7 +31,7 @@ INSERT INTO Carta(codice, negozio, personaRIF) VALUES
 ("PP02", "Coop", 2),
 ("TT001", "Tigotà", 2);
 
-
+-- DELETE FROM Persona WHERE email = "gio@pace.com";
 
 
 SELECT * FROM Persona;
