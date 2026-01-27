@@ -20,7 +20,7 @@ CREATE TABLE Carta(
     codice VARCHAR(10) NOT NULL UNIQUE,
     negozio VARCHAR(250) NOT NULL,
     personaRIF INTEGER NOT NULL,
-    FOREIGN KEY(personaRIF) REFERENCES Persona(personaID)
+    FOREIGN KEY(personaRIF) REFERENCES Persona(personaID) ON DELETE CASCADE
 );
 
 INSERT INTO Carta(codice, negozio, personaRIF) VALUES
@@ -32,7 +32,33 @@ INSERT INTO Carta(codice, negozio, personaRIF) VALUES
 ("TT001", "Tigotà", 2);
 
 -- DELETE FROM Persona WHERE email = "gio@pace.com";
+-- SELECT * FROM Persona;
+-- SELECT * FROM Carta;
 
+-- Tutte le carte di Giovanni
+SELECT * 
+	FROM Persona 
+    JOIN Carta ON Persona.personaID = Carta.personaRIF;
+    -- WHERE email = "gio@pace.com"
+    
+SELECT nome, cognome, email, codice, negozio
+	FROM Persona 
+    JOIN Carta ON Persona.personaID = Carta.personaRIF;
+    
+-- Tutte le carte di tutte le persone, comprese quelle che non ce l'hanno
+SELECT * 
+	FROM Persona 
+    LEFT JOIN Carta ON Persona.personaID = Carta.personaRIF;
+    
+-- Voglio conoscere il proprietario di CC002
+SELECT *
+	FROM Carta
+    JOIN Persona ON Carta.personaRIF = Persona.personaID;
+    -- WHERE codice = "CC002";
 
-SELECT * FROM Persona;
-SELECT * FROM Carta;
+-- Tutte le carte con i relativi proprietari e i proprietari senza carte
+SELECT *
+	FROM Carta
+    RIGHT JOIN Persona ON Carta.personaRIF = Persona.personaID;
+    
+-- 
