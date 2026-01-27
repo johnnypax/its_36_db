@@ -45,3 +45,37 @@ INSERT INTO Studente_Esame(studenteRIF, esameRIF) VALUES
 SELECT * FROM Studente;
 SELECT * FROM Studente_Esame;
 SELECT * FROM Esame;
+
+SELECT * 
+	FROM Studente 
+    JOIN Studente_Esame ON Studente.studenteID = Studente_Esame.studenteRIF
+    JOIN Esame ON Studente_Esame.esameRIF = Esame.esameID;
+	-- WHERE matricola = "AB12345";alter
+    
+SELECT *
+	FROM Esame
+    JOIN Studente_Esame ON Esame.esameID = Studente_Esame.esameRIF
+    JOIN Studente ON Studente_Esame.studenteRIF = Studente.studenteID;
+    
+-- Tutti gli studenti iscritti agli esami e quelli senza iscrizione
+SELECT * 
+	FROM Studente 
+    LEFT JOIN Studente_Esame ON Studente.studenteID = Studente_Esame.studenteRIF
+    LEFT JOIN Esame ON Studente_Esame.esameRIF = Esame.esameID;
+
+-- Tutti gli esami con iscritti e gli esami senza iscritti
+SELECT * 
+	FROM Studente 
+    RIGHT JOIN Studente_Esame ON Studente.studenteID = Studente_Esame.studenteRIF
+    RIGHT JOIN Esame ON Studente_Esame.esameRIF = Esame.esameID;
+    
+-- FULL JOIN
+SELECT * 
+	FROM Studente 
+    LEFT JOIN Studente_Esame ON Studente.studenteID = Studente_Esame.studenteRIF
+    LEFT JOIN Esame ON Studente_Esame.esameRIF = Esame.esameID
+UNION 
+SELECT * 
+	FROM Studente 
+    RIGHT JOIN Studente_Esame ON Studente.studenteID = Studente_Esame.studenteRIF
+    RIGHT JOIN Esame ON Studente_Esame.esameRIF = Esame.esameID;
