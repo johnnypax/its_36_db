@@ -154,10 +154,29 @@ INSERT INTO Personaggio_Scultura (personaggioRIF, sculturaRIF) VALUES
 (5, 2),
 (8, 6);
 
+
+
+
+
 -- Tutti gli artisti che hanno fatto dipinti presenti in un museo.
 SELECT * 
 	FROM Museo 
     JOIN Dipinto ON Museo.museoID = Dipinto.museoRIF
     JOIN Artista ON Dipinto.artistaRIF = Artista.artistaID
     WHERE Museo.nome = "Museo degli Uffizi";
+
+
+-- Tutti i personaggi rappresentati da un artista
+SELECT titolo, Personaggio.nome AS "Personaggio"
+	FROM Artista 
+    JOIN Dipinto ON Artista.artistaID = Dipinto.artistaRIF
+    JOIN Personaggio_Dipinto ON Dipinto.dipintoID = Personaggio_Dipinto.dipintoRIF
+    JOIN Personaggio ON Personaggio_Dipinto.personaggioRIF = Personaggio.personaggioID;
+    -- WHERE nome = "Leonardo Da Vinci";
+    
+SELECT *
+	FROM Artista 
+    JOIN Dipinto ON Artista.artistaID = Dipinto.artistaRIF
+    JOIN Personaggio_Dipinto ON Dipinto.dipintoID = Personaggio_Dipinto.dipintoRIF
+    JOIN Personaggio ON Personaggio_Dipinto.personaggioRIF = Personaggio.personaggioID;
 
