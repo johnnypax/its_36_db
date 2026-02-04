@@ -174,9 +174,15 @@ SELECT titolo, Personaggio.nome AS "Personaggio"
     JOIN Personaggio ON Personaggio_Dipinto.personaggioRIF = Personaggio.personaggioID;
     -- WHERE nome = "Leonardo Da Vinci";
     
-SELECT *
-	FROM Artista 
-    JOIN Dipinto ON Artista.artistaID = Dipinto.artistaRIF
-    JOIN Personaggio_Dipinto ON Dipinto.dipintoID = Personaggio_Dipinto.dipintoRIF
-    JOIN Personaggio ON Personaggio_Dipinto.personaggioRIF = Personaggio.personaggioID;
+CREATE VIEW VisualizzaArtPers AS
+	SELECT Artista.nome AS artista, titolo, Personaggio.nome AS personaggio
+		FROM Artista 
+		JOIN Dipinto ON Artista.artistaID = Dipinto.artistaRIF
+		JOIN Personaggio_Dipinto ON Dipinto.dipintoID = Personaggio_Dipinto.dipintoRIF
+		JOIN Personaggio ON Personaggio_Dipinto.personaggioRIF = Personaggio.personaggioID;
+        
+-- DROP VIEW VisualizzaArtPers;
+        
+SELECT * FROM VisualizzaArtPers;
+
 
