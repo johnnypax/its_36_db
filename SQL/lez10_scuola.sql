@@ -29,3 +29,7 @@ INSERT INTO Studente (nome, cognome, matricola) VALUES ('Federica', 'Marini', 'M
 INSERT INTO Studente (nome, cognome, matricola) VALUES ('Stefano', 'Barbieri', 'MAT000019');
 INSERT INTO Studente (nome, cognome, matricola) VALUES ('Roberta', 'Colombo', 'MAT000020');
 
+ALTER TABLE Studente ADD COLUMN eta INTEGER DEFAULT 0 AFTER cognome;
+INSERT INTO Studente (nome, cognome, matricola) VALUES ('Marika', 'Mariko', 'MAT100020');
+
+SELECT * FROM Studente;
